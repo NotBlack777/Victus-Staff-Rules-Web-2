@@ -6,10 +6,10 @@ Live: https://victus-staff-rules.vercel.app
 ## Layout
 | File | What it is |
 |---|---|
-| `index.html` | Canonical single-file build: data object + CSS + JS inline, self-contained. Deploy this as-is from Git. |
-| `deploy/` | Identical site split into `index.html`, `styles.css`, `data.js`, `app.js` (same content, same behaviour) — this is what is currently uploaded to Vercel. |
+| `index.html` | **The live site.** Canonical single-file build (data object + CSS + JS inline). Vercel deploys the repo root, so whatever is in this file on `main` is what staff see. |
+| `deploy/` | The same site split into `index.html`, `styles.css`, `data.js`, `app.js`, kept only as a manual-upload fallback / reference. **Not** what the Git deploy serves - editing it changes nothing live. Reachable at `/deploy/index` if you ever need it. |
 | `robots.txt` | `User-agent: *` / `Disallow: /` |
-| `vercel.json` | `cleanUrls` + security/noindex response headers (applies to Git-driven deploys). |
+| `vercel.json` | `cleanUrls` + `X-Robots-Tag` / `X-Content-Type-Options` / `Referrer-Policy` headers. Active, because the project now deploys from Git. |
 | `assets/logo.png` | The purple "V" logo, also used as favicon and apple-touch-icon. |
 
 ## Editing the content
@@ -29,5 +29,13 @@ Rule ids (`3.3`, `13.2`, …) are stable: they become the URL hash (`#3.3`), the
   Vercel's own Password Protection is **not** available on the Hobby plan
   (Pro: $20/project/month, Enterprise: included). Vercel Authentication (team login)
   is free on all plans but staff would need Vercel accounts.
-* `noindex` is set three ways: the `<meta name="robots">` tag, `robots.txt`, and (for
-  Git deploys) the `X-Robots-Tag` header in `vercel.json`.
+* `noindex` is set three ways: the `<meta name="robots">` tag, `robots.txt`, and the
+  `X-Robots-Tag` header in `vercel.json`.
+
+## Deployment
+`main` of `NotBlack777/Victus-Staff-Rules-Web-2` is connected to the Vercel project
+`victus-staff-rules` (framework *Other*-style static serve: root directory, no build), so a
+push to `main` publishes to https://victus-staff-rules.vercel.app automatically.
+
+Commit author emails must belong to a GitHub account, or Vercel blocks the build with
+`COMMIT_AUTHOR_REQUIRED` on the Hobby plan.
