@@ -126,7 +126,6 @@ button, input { font: inherit; color: inherit; }
 .app-shell { display: flex; flex-direction: column; min-height: 100svh; min-height: 100dvh; }
 .site-header { padding: max(.875rem, env(safe-area-inset-top)) 0 .875rem; border-bottom: 1px solid var(--line); background: var(--s1); }
 .header-inner { display: flex; flex-direction: column; gap: .875rem; }
-.brand-row { display: flex; align-items: center; justify-content: space-between; gap: .75rem; min-width: 0; }
 .brand { display: flex; align-items: center; gap: .75rem; min-width: 0; }
 .header-logo { width: 2.625rem; height: 2.625rem; border-radius: .65rem; object-fit: cover; flex-shrink: 0; border: 1px solid var(--line-strong); background: #0b0425; }
 .site-title { margin: 0; font-size: clamp(1.08rem, .98rem + .65vw, 1.45rem); font-weight: 760; line-height: 1.25; letter-spacing: -.015em; }
